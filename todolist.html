@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>to do list</title>
+    </head>
+    <body>
+        <h3>Todo list Practice1</h3>
+        <input type="text" placeholder="Todo name" class="todoName">
+        <input type="date" class="date-input">
+        <button class="addToDo" onclick="
+         addtodoList();
+        ">Add</button>
+        <div class="displayTask"></div>
+
+        <script>
+            const todoArray = [];
+
+            function renderTodoList(){
+            let todoListHTML = '';
+
+            for(let i = 0; i < todoArray.length; i++){
+                let todoObject = todoArray[i];
+                const {task, dueDate} = todoObject;
+                let html = `<p>${task} ${dueDate} <button onclick="
+                    todoArray.splice(${i},1);
+                     renderTodoList();
+                    ">Delete</button></p>`;
+                todoListHTML += html;
+            }
+            document.querySelector('.displayTask').innerHTML = todoListHTML;
+            }
+
+            function addtodoList(){
+                const inputElement = document.querySelector('.todoName');
+                let task = inputElement.value; 
+                
+                const dueDateinputElement = document.querySelector('.date-input');
+                let dueDate = dueDateinputElement.value;
+
+                todoArray.push({task,dueDate});
+
+                console.log(todoArray);
+                inputElement.value = '';
+                renderTodoList();
+                }
+
+        </script>
+    </body>
+</html>

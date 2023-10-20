@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amazon billing</title>
+</head>
+<body>
+    <input type="text" placeholder="cost of items" class="inputValue" onkeydown="
+        if(event.key === 'Enter'){
+            calculateShipping();
+        }
+        ">
+    <button onclick="
+      calculateShipping();
+    ">Submit</button>
+    <p class="displayCost"></p>
+
+    <script>
+        function calculateShipping(){
+        const inputElement = document.querySelector('.inputValue');
+        let cost = Number(inputElement.value);
+        if(cost<40){
+            cost = cost+10;
+        }
+        document.querySelector('.displayCost').innerHTML = `${cost}`;
+        }
+    </script>
+</body>
+</html>
