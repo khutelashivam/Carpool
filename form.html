@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    Password
+    <input type="text" class="inputPass">
+    confirm Password
+    <input type="text" class="inputConfirmPass">
+    <input type="submit" class ="signupButton">
+    <p class="renderResult"></p>
+
+    <script>
+
+        document.querySelector('.signupButton').event('click', ()=>{
+            signingUp();
+            });
+
+        
+        function signingUp(){
+            const passElem = document.querySelector('.inputPass');
+            const password = passElem.value;
+
+            const confirmPassElem = document.querySelector('.inputConfirmPass');
+            const confirmPassword = confirmPassElem.value;
+
+            let html = '';
+
+            if(password === confirmPassword){
+                 html = '<p>Its a Match!</p>';
+            }else
+                html = '<p>Error</p>';
+            
+            document.querySelector('.renderResult').innerHTML = html;
+        };
+    </script>
+</body>
+</html>
